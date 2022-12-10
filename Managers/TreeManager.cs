@@ -31,7 +31,7 @@ namespace MerkleFileServer.Managers
         public TreeManagerItemDetail GetPiece(string hash, int index)
         {
             if (!hashes.ContainsKey(hash)) return null;
-            if (hashes[hash].Pieces < index) return null;
+            if (hashes[hash].Pieces <= index) return null;
 
             return hashes[hash].Items[index];
         }
