@@ -1,0 +1,31 @@
+{
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "commandLineArgs": "StoredFiles/icons_rgb_circle.png;StoredFiles/test.png;StoredFiles/test.txt",
+      "launchBrowser": true,
+      "launchUrl": "hashes",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "MerkleFileServer": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "hashes",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5000"
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:10961",
+      "sslPort": 0
+    }
+  }
+}
