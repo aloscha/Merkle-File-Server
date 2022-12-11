@@ -22,17 +22,16 @@ namespace MerkleFileServer
             services.AddControllers();
 
             services.AddSingleton<IAppConfigService, AppConfigService>();
-
-            services.AddScoped<IFileService, FileService>();
-            services.AddScoped<IMerkleTreeService, MerkleTreeService>();
-
-            var sv = services.BuildServiceProvider();
-            var tm = new TreeManager(sv.GetService<IFileService>(), sv.GetService<IMerkleTreeService>());
-            services.AddSingleton<ITreeManager>(x => tm);
+            services.AddSingleton<IFileService, FileService>();
+            services.AddSingleton<IMerkleTreeService, MerkleTreeService>();
+            services.AddSingleton<ITreeManager, TreeManager>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Force to build all trees
+            app.ApplicationServices.GetService<ITreeManager>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerkleFileServer", "MerkleFileServer.csproj", "{AB3414E6-E3DE-4D70-B93D-E9B12D0711D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerkleFileServer", "MerkleFileServer.csproj", "{AB3414E6-E3DE-4D70-B93D-E9B12D0711D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerkleFileServerTests", "Tests\MerkleFileServerTests.csproj", "{D4C60EBA-9E4B-468C-9FD3-7037C7957D70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AB3414E6-E3DE-4D70-B93D-E9B12D0711D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB3414E6-E3DE-4D70-B93D-E9B12D0711D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB3414E6-E3DE-4D70-B93D-E9B12D0711D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C60EBA-9E4B-468C-9FD3-7037C7957D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C60EBA-9E4B-468C-9FD3-7037C7957D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C60EBA-9E4B-468C-9FD3-7037C7957D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C60EBA-9E4B-468C-9FD3-7037C7957D70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
