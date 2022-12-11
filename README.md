@@ -56,6 +56,10 @@ I've decided to write just few tests as an example, which helps to run my code w
 * MerkleTreeTests - To check if the MerkleTree is building correct
 * MerkleTreeServiceTests - To check normalization and validation process
 
+Initially all tests should be green:
+
+![image](https://user-images.githubusercontent.com/5141943/206914671-53e96fa1-8389-446f-8c56-d44e9cf05de3.png)
+
 ## Available Endpoints
 
 ### GET /hashes
