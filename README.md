@@ -8,29 +8,31 @@ The server also expose a `piece` HTTP endpoint can be used to download each piec
 ## Task/Implementation thoughts
 
 * The MertkeTree was implemented from scratch, so no extra library been used. Generally I decided for that because I have controll of everything what's happening, so no extra calculations should be done
+  * Traverse from bottom to top and build tree was done recursively and via reference (Left/Right/Parent)
 * The server was written with some level of abtraction (especially in MerkleLeaf/MerkleNode implementation)
 * The entire app was splitted to smaller chunks responsible for their own task (like FileManager or TreeManager)
 * Because this task is not for memory testing I decided to:
-  * Use singleton class for building MerkleTrees on the beggining (when server starts)
+  * Use singleton class for building MerkleTrees on the beggining (when server starts -> TreeManager)
     * For every file I build 1 MerkleTree and save result in dictionary (globally available from service)
-  * Every possibility of calls (so all pieces) been created on the beggining, so whenever user call the server the response going to be server immedietally
+  * Every possibility of calls (so all pieces) been created on the beggining, so whenever user call the server the response going to be immedietally (O(1) from dictionary call)
 * The server was tested on files:
-  * Max 8MB
-  * Min 7B
+  * Max 8MB (~8500 pieces)
+  * Min 7B (1 piece)
 * Empty response if piece is not existed or hash is incorrect `{"content":null,"proof":null}`
 * Instead of SHA1 we are using SHA256
-* Because I need a way to test `piece` result I decided to write own `Validate` method in `TreeManager` which I'm used in tests to confirm that all my logic is correct (back and forth)
+* Because I need a way to test `piece` result I decided to write own `Validate` (hash reconstruction) method in `TreeManager` which I'm used in tests to confirm that all my logic is correct (back and forth)
 
 ## Future Code improvements (ideas)
 
-* Expose `Validate` method, so user can validate some piece of file with proofs
+* Expose `Validate` method, so user can reconstruct the hash and compare
 * This is PoC, so for larger files or lot's of files, better idea is to calculate MerkleTree on demand and store result (similar behaviour to `AddSingleton` in ASP, create only when needs)
 * Different implementation of MerkleTree, like support BigEndian/LittleEndian text
+* More tests in edge cases (ex. empty files, out of range tests etc.)
 
 ## Server settings
 
 * Server was written with .NET Core 3.1 (https://dotnet.microsoft.com/en-us/download/dotnet/3.1)
-* In the `appsettings.json` there is setup for the FileSize (default 1024KB but could be easily increased)
+* In the `appsettings.json` there is setup for the FileSize (default 1024B but could be easily increased)
 
 ## Running
 
@@ -49,7 +51,10 @@ For command line runup please go to the root directory (`appsettings.json` locat
 
 ## Tests
 
-
+I've decided to write just few tests as an example, which helps to run my code without debugging entire app
+* EncryptorTests - To check conversion between hex string and byte array
+* MerkleTreeTests - To check if the MerkleTree is building correct
+* MerkleTreeServiceTests - To check normalization and validation process
 
 ## Available Endpoints
 
